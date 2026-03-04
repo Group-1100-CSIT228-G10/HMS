@@ -1,4 +1,4 @@
-package Room_Service;
+package RoomService;
 
 public class RoomService {
 }
