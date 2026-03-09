@@ -1,5 +1,5 @@
 package RoomService;
-
+// Useless class will be deleted soon
 import java.util.ArrayList;
 
 public class RoomService {

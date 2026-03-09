@@ -5,12 +5,10 @@ import Room.*;
 public class Invoice {
 
     private Room roomUsed;
-    private double roomCost;
     private RoomServiceOrder serviceOrder;
 
-    public Invoice(Room roomUsed, double roomCost, RoomServiceOrder serviceOrder) {
+    public Invoice(Room roomUsed, RoomServiceOrder serviceOrder) {
         this.roomUsed = roomUsed;
-        this.roomCost = roomCost;
         this.serviceOrder = serviceOrder;
     }
 
@@ -22,7 +20,7 @@ public class Invoice {
     }
 
     public double calculateGrandTotal() {
-        return roomCost + calculateServiceCost();
+        return roomUsed.getPricePerNight() + calculateServiceCost();
     }
 
     public void printInvoice() {
