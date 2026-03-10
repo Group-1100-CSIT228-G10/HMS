@@ -1,6 +1,6 @@
 package Room;
 
-public class Room {
+public abstract class Room {
 
     private int roomNumber;
     private double pricePerNight;
@@ -30,4 +30,6 @@ public class Room {
     public double calculateCost(int numberOfDays) {
         return pricePerNight * numberOfDays;
     }
+
+    public abstract String getName();
 }

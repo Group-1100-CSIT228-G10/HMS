@@ -1,5 +1,5 @@
 package Room;
-
+// Useless class will be deleted soon
 public class TotalRoomCost {
     private Room room;
     private long stayDays;

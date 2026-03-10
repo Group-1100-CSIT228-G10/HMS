@@ -1,12 +1,14 @@
 package RoomService;
 
+import Room.*;
+
 public class Invoice {
 
-    private double roomCost;
+    private Room roomUsed;
     private RoomServiceOrder serviceOrder;
 
-    public Invoice(double roomCost, RoomServiceOrder serviceOrder) {
-        this.roomCost = roomCost;
+    public Invoice(Room roomUsed, RoomServiceOrder serviceOrder) {
+        this.roomUsed = roomUsed;
         this.serviceOrder = serviceOrder;
     }
 
@@ -18,13 +20,17 @@ public class Invoice {
     }
 
     public double calculateGrandTotal() {
-        return roomCost + calculateServiceCost();
+        return roomUsed.getPricePerNight() + calculateServiceCost();
     }
 
     public void printInvoice() {
 
         System.out.println("========== HOTEL INVOICE ==========");
-        System.out.println("Room Cost: ₱" + roomCost);
+        System.out.print("Room Status: ");
+        if(roomUsed instanceof StandardRoom)      System.out.println(((StandardRoom)roomUsed).getName());
+        else if(roomUsed instanceof PremiumRoom)  System.out.println(((PremiumRoom)roomUsed).getName());
+        else if(roomUsed instanceof VIPRoom)      System.out.println(((VIPRoom)roomUsed).getName());
+        System.out.println("Room Cost: ₱" + roomUsed.getPricePerNight());
 
         if (serviceOrder != null && !serviceOrder.getItems().isEmpty()) {
             serviceOrder.displayOrder();
