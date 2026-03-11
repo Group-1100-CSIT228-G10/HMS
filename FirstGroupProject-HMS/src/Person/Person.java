@@ -1,26 +1,20 @@
 package Person;
 
 public abstract class Person {
-    private String id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private final String firstName;
+    private final String middleName;
+    private final String lastName;
     private String contactNumber;
     private String email;
 
-    public Person(String id, String firstName, String middleName, String lastName,
+    public Person(String firstName, String middleName, String lastName,
                   String contactNumber, String email) {
 
-        this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
         this.contactNumber = contactNumber;
         this.email = email;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getFirstName() {
