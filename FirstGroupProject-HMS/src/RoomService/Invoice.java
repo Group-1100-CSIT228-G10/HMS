@@ -1,15 +1,23 @@
 package RoomService;
 
+import Person.*;
 import Room.*;
 
 public class Invoice {
-
+    private String RoomType;
+    private int RoomNumber;
+    private Guest InvoiceOwner;
+    private int stayDuration;
     private Room roomUsed;
+    private double RoomCost;
     private RoomServiceOrder serviceOrder;
 
-    public Invoice(Room roomUsed, RoomServiceOrder serviceOrder) {
-        this.roomUsed = roomUsed;
-        this.serviceOrder = serviceOrder;
+    public Invoice(String RoomType, int RoomNumber, Guest InvoiceOwner, int stayDuration, double RoomCost) {
+        this.RoomType = RoomType;
+        this.RoomNumber = RoomNumber;
+        this.InvoiceOwner = InvoiceOwner;
+        this.stayDuration = stayDuration;
+        this.RoomCost = RoomCost;
     }
 
     public double calculateServiceCost() {
@@ -20,17 +28,15 @@ public class Invoice {
     }
 
     public double calculateGrandTotal() {
-        return roomUsed.getPricePerNight() + calculateServiceCost();
+        return RoomCost * stayDuration;
     }
 
     public void printInvoice() {
 
         System.out.println("========== HOTEL INVOICE ==========");
-        System.out.print("Room Status: ");
-        if(roomUsed instanceof StandardRoom)      System.out.println(((StandardRoom)roomUsed).getName());
-        else if(roomUsed instanceof PremiumRoom)  System.out.println(((PremiumRoom)roomUsed).getName());
-        else if(roomUsed instanceof VIPRoom)      System.out.println(((VIPRoom)roomUsed).getName());
-        System.out.println("Room Cost: ₱" + roomUsed.getPricePerNight());
+        System.out.println("Room Occupant: " + InvoiceOwner.getFullName());
+        System.out.println("Room Status: " + RoomType);
+        System.out.println("Room Cost: $" + (String.format("%.2f", RoomCost)));
 
         if (serviceOrder != null && !serviceOrder.getItems().isEmpty()) {
             serviceOrder.displayOrder();
@@ -39,7 +45,9 @@ public class Invoice {
         }
 
         System.out.println("-----------------------------------");
-        System.out.println("GRAND TOTAL: ₱" + calculateGrandTotal());
+        System.out.println("GRAND TOTAL: $" + (String.format("%.2f", calculateGrandTotal())));
         System.out.println("===================================");
+
+        System.out.println("Room Occupant Contact: " + InvoiceOwner.getContactNumber());
     }
 }
