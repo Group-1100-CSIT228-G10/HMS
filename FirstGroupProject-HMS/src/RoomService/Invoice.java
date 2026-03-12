@@ -1,15 +1,13 @@
 package RoomService;
 
 import Person.*;
-import Room.*;
 
 public class Invoice {
     private String RoomType;
     private int RoomNumber;
+    private double RoomCost;
     private Guest InvoiceOwner;
     private int stayDuration;
-    private Room roomUsed;
-    private double RoomCost;
     private RoomServiceOrder serviceOrder;
 
     public Invoice(String RoomType, int RoomNumber, Guest InvoiceOwner, int stayDuration, double RoomCost, RoomServiceOrder serviceOrder) {
@@ -37,6 +35,7 @@ public class Invoice {
         System.out.println("========== HOTEL INVOICE ==========");
         System.out.println("Room Occupant: " + InvoiceOwner.getFullName());
         System.out.println("Room Status: " + RoomType);
+        System.out.println("Room Number: " + RoomNumber);
         System.out.println("Room Cost: $" + (String.format("%.2f", RoomCost)));
 
         if (serviceOrder != null && !serviceOrder.getItems().isEmpty()) {
@@ -49,6 +48,6 @@ public class Invoice {
         System.out.println("GRAND TOTAL: $" + (String.format("%.2f", calculateGrandTotal())));
         System.out.println("===================================");
 
-        System.out.println("Room Occupant Contact: " + InvoiceOwner.getContactNumber());
+        System.out.println("Room Occupant Contact: " + InvoiceOwner.contactNumber);
     }
 }

@@ -23,13 +23,13 @@ public class RoomServiceOrder {
     public void gacha(){
             Random randomNum = new Random();
             int random = randomNum.nextInt(0,20); 
-            if(random < availableItems.size()) addItem(availableItems.get(random).getItemName());
+            if(random < availableItems.size()) addItem(availableItems.get(random).itemName);
     }
 
     public void addItem(String item) {
         boolean ItemFound = false;
         for(RoomServiceItem s : availableItems){
-            if(s.getItemName().equals(item)){
+            if(s.itemName.equals(item)){
                 ItemFound = true;
                 items.add(s);
                 break;
@@ -40,25 +40,25 @@ public class RoomServiceOrder {
     }
 
     public void removeItem(String itemName) {
-        items.removeIf(item -> item.getItemName().equalsIgnoreCase(itemName));
+        items.removeIf(item -> item.itemName.equalsIgnoreCase(itemName));
     }
 
     public double calculateServiceTotal() {
         double total = 0;
 
         for (RoomServiceItem item : items) {
-            total += item.getPrice();
+            total += item.price;
         }
 
         return total;
     }
 
     public void displayOrder() {
-        System.out.println("===== ROOM SERVICE ORDER =====");
+        System.out.println("======= ROOM SERVICE ORDER ========");
         for (RoomServiceItem item : items) {
             item.displayItem();
         }
-        System.out.println("Service Total: ₱" + calculateServiceTotal());
+        System.out.println("Service Total: $" + calculateServiceTotal());
     }
 
     public ArrayList<RoomServiceItem> getItems() {

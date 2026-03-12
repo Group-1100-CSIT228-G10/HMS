@@ -98,7 +98,7 @@ public class HotelManager {
                     System.out.print("Enter email address of the Guest (type NA if not applicable): ");
                     email = sc.nextLine();
                     fastType("===========================================================");
-                    System.out.print("Enter the type of room: ");
+                    System.out.print("Enter the type of room (Standard/Premium/VIP): ");
                     roomtype = sc.nextLine();
                     System.out.print("Stay Duration (in days): ");
                     duration = sc.nextInt();
@@ -247,7 +247,7 @@ public class HotelManager {
 
         if(RoomType.equalsIgnoreCase("Standard")){
             for(Room r : rooms){
-                if(r instanceof StandardRoom && r.isAvailable()){
+                if(r instanceof StandardRoom && r.isAvailable){
                     r.addGuest(g);
                     r.setDuration(stayDuration);
                     return true;
@@ -257,7 +257,7 @@ public class HotelManager {
         }
         else if(RoomType.equalsIgnoreCase("Premium")){
             for(Room r : rooms){
-                if(r instanceof PremiumRoom && r.isAvailable()){
+                if(r instanceof PremiumRoom && r.isAvailable){
                     r.addGuest(g);
                     r.setDuration(stayDuration);
                     return true;
@@ -267,7 +267,7 @@ public class HotelManager {
         }
         else if(RoomType.equalsIgnoreCase("VIP")){
             for(Room r : rooms){
-                if(r instanceof VIPRoom && r.isAvailable()){
+                if(r instanceof VIPRoom && r.isAvailable){
                     r.addGuest(g);
                     r.setDuration(stayDuration);
                     return true;
@@ -284,7 +284,7 @@ public class HotelManager {
         boolean found = false;
 
         for(Guest g : guests){
-            if(g.getFirstName().equalsIgnoreCase(fn) && g.getLastName().equalsIgnoreCase(ln) && g.getContactNumber().equalsIgnoreCase(contact)){
+            if(g.firstName.equalsIgnoreCase(fn) && g.lastName.equalsIgnoreCase(ln) && g.contactNumber.equalsIgnoreCase(contact)){
                 found =  true;
             }
         }
@@ -293,7 +293,7 @@ public class HotelManager {
             for(Room r : rooms){
             Guest g = r.getGuest();
             if(g == null) continue;
-            if(g.getFirstName().equalsIgnoreCase(fn) && g.getLastName().equalsIgnoreCase(ln) && g.getContactNumber().equalsIgnoreCase(contact)){
+            if(g.firstName.equalsIgnoreCase(fn) && g.lastName.equalsIgnoreCase(ln) && g.contactNumber.equalsIgnoreCase(contact)){
                     if(r instanceof StandardRoom) ((StandardRoom)r).removeGuest();
                     if(r instanceof PremiumRoom) ((PremiumRoom)r).removeGuest();
                     if(r instanceof VIPRoom) ((VIPRoom)r).removeGuest();
@@ -311,7 +311,7 @@ public class HotelManager {
 
     public void viewRoomService(){
         for(Room r : rooms){
-            if(!r.isAvailable()){
+            if(!r.isAvailable){
                 r.generateRoomService();
             }
         }
@@ -397,10 +397,4 @@ public class HotelManager {
         }
     }
 
-    
-    private void printLineBars(int n){
-        for(int i = 0; i < n; i++){
-            System.out.println("===========================================================");
-        }
-    }
 }

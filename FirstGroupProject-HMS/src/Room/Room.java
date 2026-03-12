@@ -6,9 +6,9 @@ import java.util.*;
 
 public abstract class Room {
 
-    private final int roomNumber;
-    private final double pricePerNight;
-    private boolean isAvailable;
+    public final int roomNumber;
+    public final double pricePerNight;
+    public boolean isAvailable;
     private Guest guest;
     private int stayDuration;
     private RoomServiceOrder roomServiceOrder;
@@ -20,17 +20,6 @@ public abstract class Room {
         guest = null;
         stayDuration = 0;
         roomServiceOrder = null;
-    }
-
-    public int getRoomNumber() {
-        return roomNumber;
-    }
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
     }
 
     public Guest getGuest() {
@@ -51,7 +40,7 @@ public abstract class Room {
             setAvailability(false);
             return true;
         }else{
-            System.out.println("This room is occupied by " + guest.getFirstName());
+            System.out.println("This room is occupied by " + guest.firstName);
             return false;
         }
     }
