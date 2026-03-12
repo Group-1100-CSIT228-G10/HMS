@@ -20,7 +20,7 @@ public class StandardRoom extends Room {
             System.out.println("This room is has no occupant");
             return false;
         }else{
-            Invoice inv = new Invoice("Standard Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight());
+            Invoice inv = new Invoice("Standard Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight(), getRoomServiceOrder());
             inv.printInvoice();
             deleteGuest();
             setDuration(0);

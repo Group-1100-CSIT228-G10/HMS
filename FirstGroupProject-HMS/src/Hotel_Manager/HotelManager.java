@@ -129,6 +129,12 @@ public class HotelManager {
                     break;
                 case 's':
                     System.out.println("cater guests room service");
+                    fastType("===========================================================");
+                    viewRoomService();
+                    fastType("===========================================================");
+                    viewRoomService();
+                    fastType("===========================================================");
+                    viewRoomService();
                     break;
                 case 'v':
                     printHotel();
@@ -144,6 +150,13 @@ public class HotelManager {
     }
 
     // public void test(){
+    //     HotelName = "Diwata Inn";
+    //     addStandardRooms(3);
+    //     addPremiumRooms(3);
+    //     addVIPRooms(3);
+    //     String firstName; String middleName; String lastName; 
+    //     String contact; String email; String roomtype;
+    //     int duration;
     //     char opt = '0';
     //     while(opt != 'x'){
     //         System.out.println("List of Functions:");
@@ -152,28 +165,29 @@ public class HotelManager {
     //         System.out.println("v = view hotel");
     //         System.out.println("x = exit system");
     //         fastTypeNoNewLine("Option? ");
-    //         opt = sc.nextLine().charAt(0);
+    //         String input = sc.nextLine();
+    //         if(input.isEmpty()) continue;
+    //         opt = input.charAt(0);
 
     //         switch (opt) {
     //             case 'a':
     //                 fastType("You have chosen to add a guest!");
     //                 fastType("===========================================================");
     //                 System.out.print("Enter the First Name of the Guest: ");
-    //                 String firstName = sc.nextLine();
+    //                 firstName = sc.nextLine();
     //                 System.out.print("Enter the Middle Name of the Guest (type NA if not applicable): ");
-    //                 String middleName = sc.nextLine();
+    //                 middleName = sc.nextLine();
     //                 System.out.print("Enter the Last Name of the Guest: ");
-    //                 String lastName = sc.nextLine();
+    //                 lastName = sc.nextLine();
     //                 System.out.print("Enter the contact number of the Guest: ");
-    //                 String contact = sc.nextLine();
+    //                 contact = sc.nextLine();
     //                 System.out.print("Enter email address of the Guest (type NA if not applicable): ");
-    //                 String email = sc.nextLine();
+    //                 email = sc.nextLine();
     //                 fastType("===========================================================");
     //                 System.out.print("Enter the type of room: ");
-    //                 String roomtype = sc.nextLine();
+    //                 roomtype = sc.nextLine();
     //                 System.out.print("Stay Duration (in days): ");
-    //                 int duration = sc.nextInt();
-    //                 sc.nextLine();
+    //                 duration = sc.nextInt();
     //                 fastType("===========================================================");
 
     //                 if(addGuest(firstName, middleName, lastName, contact, email, roomtype, duration)){
@@ -183,10 +197,30 @@ public class HotelManager {
     //                 }
     //                 break;
     //             case 'r':
-    //                 System.out.println("remove guest");
+    //                 fastType("You have chosen to remove a guest!");
+    //                 fastType("===========================================================");
+    //                 System.out.print("Enter the First Name of the Guest: ");
+    //                 firstName = sc.nextLine();
+    //                 System.out.print("Enter the Last Name of the Guest: ");
+    //                 lastName = sc.nextLine();
+    //                 System.out.print("Enter the contact number of the Guest: ");
+    //                 contact = sc.nextLine();
+
+    //                 if(removeGuest(firstName, lastName, contact)){
+    //                     fastType("Successfuly reserved guest a room");
+    //                 }else{
+    //                     fastType("System Error, an issue occured during Guest processing");
+    //                 }
+
     //                 break;
     //             case 's':
     //                 System.out.println("cater guests room service");
+    //                 fastType("===========================================================");
+    //                 viewRoomService();
+    //                 fastType("===========================================================");
+    //                 viewRoomService();
+    //                 fastType("===========================================================");
+    //                 viewRoomService();
     //                 break;
     //             case 'v':
     //                 printHotel();
@@ -197,7 +231,6 @@ public class HotelManager {
     //             default:
     //                 fastType("INVALID INPUT!!!");
     //         }
-
     //         fastType("===========================================================");
     //     }
         
@@ -274,6 +307,14 @@ public class HotelManager {
         
 
         return false;
+    }
+
+    public void viewRoomService(){
+        for(Room r : rooms){
+            if(!r.isAvailable()){
+                r.generateRoomService();
+            }
+        }
     }
 
 

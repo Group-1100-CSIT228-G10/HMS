@@ -20,7 +20,7 @@ public class PremiumRoom extends Room {
             System.out.println("This room is has no occupant");
             return false;
         }else{
-            Invoice inv = new Invoice("Premium Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight());
+            Invoice inv = new Invoice("Premium Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight(), getRoomServiceOrder());
             inv.printInvoice();
             deleteGuest();
             setDuration(0);
