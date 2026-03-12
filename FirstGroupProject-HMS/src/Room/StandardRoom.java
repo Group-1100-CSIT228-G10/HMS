@@ -10,17 +10,17 @@ public class StandardRoom extends Room {
 
     @Override
     public String getName(){
-        if(getGuest() != null) return "Standard Room #" + getRoomNumber() + " -> Occupied by: " + getGuest().getFullName();
-        return "Standard Room #" + getRoomNumber() + " -> Occupied by: No One";
+        if(getGuest() != null) return "Standard Room #" + roomNumber + " -> Occupied by: " + getGuest().getFullName();
+        return "Standard Room #" + roomNumber + " -> Occupied by: No One";
     }
 
     @Override
     public boolean removeGuest(){
-        if(isAvailable()){
+        if(isAvailable){
             System.out.println("This room is has no occupant");
             return false;
         }else{
-            Invoice inv = new Invoice("Standard Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight(), getRoomServiceOrder());
+            Invoice inv = new Invoice("Standard Room", roomNumber, getGuest(), getStayDuration(), pricePerNight, getRoomServiceOrder());
             inv.printInvoice();
             deleteGuest();
             setDuration(0);

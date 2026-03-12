@@ -3,7 +3,7 @@ package Person;
 public class Staff extends Person {
 
     private double salary;
-    private String shift;   
+    public String shift;   
 
     public Staff(String firstName, String middleName, String lastName,
                  String contactNumber, String email, double salary,
@@ -17,9 +17,15 @@ public class Staff extends Person {
     public double getSalary() { 
         return salary;
     }
+
     public void setSalary(double salary){ 
+        if(salary < this.salary || salary <= 0 ){
+            System.out.println("Cannot fullfill salary change");
+            return;
+        }
         this.salary = salary;
     }
+
     public String getShift(){ 
         return shift;
     }
@@ -30,8 +36,8 @@ public class Staff extends Person {
     @Override
     public void displayInfo() {
         System.out.println("Name: " + getFullName());
-        System.out.println("Contact: " + getContactNumber());
-        System.out.println("Email: " + getEmail());
+        System.out.println("Contact: " + contactNumber);
+        System.out.println("Email: " + email);
         System.out.println("Salary: " + salary);
         System.out.println("Shift: " + shift);
     }

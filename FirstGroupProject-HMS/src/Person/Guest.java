@@ -12,7 +12,7 @@ public class Guest extends Person {
     @Override
     public void displayInfo() {
         System.out.println("Guest Name: " + getFullName());
-        System.out.println("Contact #: " + getContactNumber());
-        System.out.println("Email: " + getEmail());
+        System.out.println("Contact #: " + contactNumber);
+        System.out.println("Email: " + email);
     }
 }

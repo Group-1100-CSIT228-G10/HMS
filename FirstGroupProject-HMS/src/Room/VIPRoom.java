@@ -10,17 +10,17 @@ public class VIPRoom extends Room {
 
     @Override
     public String getName(){
-        if(getGuest() != null) return "VIP Room #" + getRoomNumber() + " -> Occupied by: " + getGuest().getFullName();
-        return "VIP Room #" + getRoomNumber() + " -> Occupied by: No One";
+        if(getGuest() != null) return "VIP Room #" + roomNumber + " -> Occupied by: " + getGuest().getFullName();
+        return "VIP Room #" + roomNumber + " -> Occupied by: No One";
     }
 
     @Override
     public boolean removeGuest(){
-        if(isAvailable()){
+        if(isAvailable){
             System.out.println("This room is has no occupant");
             return false;
         }else{
-            Invoice inv = new Invoice("VIP Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight(), getRoomServiceOrder());
+            Invoice inv = new Invoice("VIP Room", roomNumber, getGuest(), getStayDuration(), pricePerNight, getRoomServiceOrder());
             inv.printInvoice();
             deleteGuest();
             setDuration(0);

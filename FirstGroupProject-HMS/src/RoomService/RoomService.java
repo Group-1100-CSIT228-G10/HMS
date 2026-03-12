@@ -17,7 +17,7 @@ public class RoomService {
     public double calculateTotal() {
         double total = 0;
         for (RoomServiceItem item : items) {
-            total += item.getPrice();
+            total += item.price;
         }
         return total;
     }

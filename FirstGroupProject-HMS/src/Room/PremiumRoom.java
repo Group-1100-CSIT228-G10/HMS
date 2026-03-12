@@ -10,17 +10,17 @@ public class PremiumRoom extends Room {
 
     @Override
     public String getName(){
-        if(getGuest() != null) return "Premium Room #" + getRoomNumber() + " -> Occupied by: " + getGuest().getFullName();
-        return "Premium Room #" + getRoomNumber() + " -> Occupied by: No One";
+        if(getGuest() != null) return "Premium Room #" + roomNumber + " -> Occupied by: " + getGuest().getFullName();
+        return "Premium Room #" + roomNumber + " -> Occupied by: No One";
     }
 
     @Override
     public boolean removeGuest(){
-        if(isAvailable()){
+        if(isAvailable){
             System.out.println("This room is has no occupant");
             return false;
         }else{
-            Invoice inv = new Invoice("Premium Room", getRoomNumber(), getGuest(), getStayDuration(), getPricePerNight(), getRoomServiceOrder());
+            Invoice inv = new Invoice("Premium Room", roomNumber, getGuest(), getStayDuration(), pricePerNight, getRoomServiceOrder());
             inv.printInvoice();
             deleteGuest();
             setDuration(0);
