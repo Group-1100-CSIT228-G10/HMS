@@ -1,23 +1,29 @@
 package RoomService;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class RoomServiceOrder {
 
-    private String orderId;
+    private int orderId;
     private ArrayList<RoomServiceItem> items;
     private ArrayList<RoomServiceItem> availableItems;
 
-    public RoomServiceOrder(String orderId) {
+    public RoomServiceOrder(int orderId) {
         this.orderId = orderId;
         this.items = new ArrayList<>();
-
+        this.availableItems = new ArrayList<>();
         setAvailableItems(availableItems);
     }
     
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
+    }
+
+    public void gacha(){
+            Random randomNum = new Random();
+            int random = randomNum.nextInt(0,20); 
+            if(random < availableItems.size()) addItem(availableItems.get(random).getItemName());
     }
 
     public void addItem(String item) {

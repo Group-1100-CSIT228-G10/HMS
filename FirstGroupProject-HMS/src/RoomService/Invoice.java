@@ -12,12 +12,13 @@ public class Invoice {
     private double RoomCost;
     private RoomServiceOrder serviceOrder;
 
-    public Invoice(String RoomType, int RoomNumber, Guest InvoiceOwner, int stayDuration, double RoomCost) {
+    public Invoice(String RoomType, int RoomNumber, Guest InvoiceOwner, int stayDuration, double RoomCost, RoomServiceOrder serviceOrder) {
         this.RoomType = RoomType;
         this.RoomNumber = RoomNumber;
         this.InvoiceOwner = InvoiceOwner;
         this.stayDuration = stayDuration;
         this.RoomCost = RoomCost;
+        this.serviceOrder = serviceOrder;
     }
 
     public double calculateServiceCost() {

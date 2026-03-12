@@ -1,6 +1,8 @@
 package Room;
 
 import Person.*;
+import RoomService.*;
+import java.util.*;
 
 public abstract class Room {
 
@@ -9,6 +11,7 @@ public abstract class Room {
     private boolean isAvailable;
     private Guest guest;
     private int stayDuration;
+    private RoomServiceOrder roomServiceOrder;
 
     public Room(int roomNumber, double pricePerNight) {
         this.roomNumber = roomNumber;
@@ -16,6 +19,7 @@ public abstract class Room {
         this.isAvailable = true; 
         guest = null;
         stayDuration = 0;
+        roomServiceOrder = null;
     }
 
     public int getRoomNumber() {
@@ -37,6 +41,10 @@ public abstract class Room {
         return stayDuration;
     }
 
+    public RoomServiceOrder getRoomServiceOrder(){
+        return roomServiceOrder;
+    }
+
     public boolean addGuest(Guest g){
         if(isAvailable){
             this.guest = g;
@@ -46,6 +54,17 @@ public abstract class Room {
             System.out.println("This room is occupied by " + guest.getFirstName());
             return false;
         }
+    }
+
+    public void generateRoomService(){
+        if(roomServiceOrder == null){
+            Random randomNum = new Random();
+            int ID = randomNum.nextInt(100,999); 
+
+            roomServiceOrder = new RoomServiceOrder(ID);
+        }
+
+        roomServiceOrder.gacha();
     }
 
     public void deleteGuest(){
